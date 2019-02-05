@@ -4,7 +4,6 @@ from flask import render_template
 import time
 import threading
 from mouvement import Movement
-from temperature import TemperatureSensor
 
 app = Flask(__name__)
 
@@ -30,6 +29,3 @@ def index():
 mouvement = Movement(17)
 read_mouvement = threading.Thread(target=mouvement.movement_loop,args=(socketio,))
 read_mouvement.start()
-temperature = TemperatureSensor()
-read_temperature = threading.Thread(target=temperature.infinite_temperature,args=(socketio,))
-read_temperature.start()

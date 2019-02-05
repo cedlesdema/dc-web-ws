@@ -2,13 +2,13 @@ import RPi.GPIO as GPIO
 import time
 from flask_socketio import SocketIO, send, emit
 from led import Led
-
+from buzzer import Buzzer
 
 # //Initialisation de notre GPIO 17 pour recevoir un signal
 # //Contrairement à nos LEDs avec lesquelles on envoyait un signal
 lightblue = Led(24)
 lightred = Led(18)
-
+buzzer = Buzzer(22)
 
 class Movement():
     def __init__(self, broche):
@@ -24,12 +24,20 @@ class Movement():
             currentstate = GPIO.input(self.broche)
             if currentstate == 1 and previousstate == 0:
                 lightblue.off()
-                lightred.on()
-                socketio.emit('alert', 'Mouvement détecté', Broadcast=True)
+                buzzer.on()
+                lightred.blink()
+                buzzer.on()
+                lightred.blink()
+                buzzer.on()
+                lightred.blink()
+                buzzer.on()
+                lightred.blink()
+                socketio.emit('alert', 'Alarme déclenchée', Broadcast=True)
                 previousstate = 1
             elif currentstate == 0 and previousstate == 1:
                 lightred.off()
                 lightblue.on()
-                socketio.emit('alert', 'Prêt', Broadcast=True)
+                socketio.emit('alert', 'En attente', Broadcast=True)
                 previousstate = 0
             time.sleep(0.01)
+
