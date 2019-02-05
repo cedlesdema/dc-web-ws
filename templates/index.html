@@ -1,22 +1,11 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') 
+}}">
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>SocketIO</title>
-
-		<style>
-			* { font-family:tahoma; font-size:12px; padding:0px;margin:0px;}
-			p { line-height:18px; }
-			div { width:500px; margin-left:auto; margin-right:auto;}
-			#content { padding:5px; background:#ddd; border-radius:5px;
-				overflow-y: scroll; border:1px solid #CCC;
-			    margin-top:10px; height: 160px; }
-			#input { border-radius:2px; border:1px solid #ccc;
-			    margin-top:10px; padding:5px; width:400px;
-			}
-			#status { width:88px;display:block;float:left;margin-top:15px; }
-		</style>
 	</head>
+
 	<body>
 		<div id="content"></div>
 		<div>
@@ -25,5 +14,31 @@
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+
+                <body>
+<div id="alerte" class="sonar">
+<svg id="radar-circle">
+  <circle cx="50%" cy="50%" r="0" fill-opacity="0" stroke="white" stroke-width="16px" stroke-opacity="0.4">
+    <animate attributeName="r" from="0" to="1220" dur="6s" repeatCount="indefinite" begin="0.25s" />
+  </circle>
+  
+  <circle cx="50%" cy="50%" r="0" fill-opacity="0" stroke="white" stroke-width="12px" stroke-opacity="0.4">
+    <animate attributeName="r" from="0" to="1220" dur="6s" repeatCount="indefinite" begin="1.25s" />
+  </circle>
+  
+  <circle cx="50%" cy="50%" r="0" fill-opacity="0" stroke="white" stroke-width="8px" stroke-opacity="0.4">
+    <animate attributeName="r" from="0" to="1220" dur="6s" repeatCount="indefinite" begin="2.25s" />
+  </circle>
+  
+  <circle cx="50%" cy="50%" r="0" fill-opacity="0" stroke="white" stroke-width="4px" stroke-opacity="0.4">
+    <animate attributeName="r" from="0" to="1220" dur="6s" repeatCount="indefinite" begin="3.25s" />
+  </circle>
+  
+  <circle cx="50%" cy="50%" r="0" fill-opacity="0" stroke="white" stroke-width="2px" stroke-opacity="0.4">
+    <animate attributeName="r" from="0" to="1220" dur="6s" repeatCount="indefinite" begin="4.25s" />
+  </circle>
+</svg>
+</div>
+                
 	</body>
 </html>

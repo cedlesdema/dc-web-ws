@@ -32,12 +32,12 @@ class Movement():
                 lightred.blink()
                 buzzer.on()
                 lightred.blink()
-                socketio.emit('alert', 'Alarme déclenchée', Broadcast=True)
+                socketio.emit('alert', '1', Broadcast=True)
                 previousstate = 1
             elif currentstate == 0 and previousstate == 1:
                 lightred.off()
                 lightblue.on()
-                socketio.emit('alert', 'En attente', Broadcast=True)
+                socketio.emit('alert', '0', Broadcast=True)
                 previousstate = 0
             time.sleep(0.01)
 
